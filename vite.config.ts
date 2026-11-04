@@ -14,5 +14,9 @@ export default defineConfig({
             { find: /^@\//, replacement: file('./resources/js/') },
         ],
     },
-    server: { host: '0.0.0.0' },
+    server: {
+        host: '0.0.0.0',
+        // v0's isolated preview uses ephemeral sb-*.vercel.run hostnames.
+        allowedHosts: ['.vercel.run'],
+    },
 });
