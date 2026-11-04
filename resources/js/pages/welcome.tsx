@@ -35,7 +35,7 @@ const capabilities = [
 function ProductPreview() {
     return (
         <div className="relative mx-auto w-full max-w-[720px]">
-            <div className="absolute -inset-6 rounded-[2rem] bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.24),transparent_66%)] blur-2xl" />
+            <div className="absolute -inset-8 rounded-[2rem] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.24),transparent_66%)] blur-2xl" />
             <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_35px_90px_-35px_rgba(15,23,42,0.36)]">
                 <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 sm:px-5">
                     <div className="flex items-center gap-2.5">
@@ -107,29 +107,29 @@ export default function Welcome() {
     return (
         <>
             <Head title="Northstar — Work with clarity" />
-            <div className="min-h-screen overflow-hidden bg-[#fbfcff] text-slate-950 selection:bg-indigo-100 selection:text-indigo-950">
+            <div className="min-h-screen overflow-hidden bg-[radial-gradient(circle_at_78%_18%,rgba(34,211,238,0.16),transparent_28%),radial-gradient(circle_at_18%_32%,rgba(79,70,229,0.28),transparent_34%),linear-gradient(135deg,#07152f_0%,#0b1d42_52%,#101c48_100%)] text-white selection:bg-cyan-200 selection:text-[#07152f]">
                 <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
                     <a href="#top" className="flex items-center gap-2.5" aria-label="Northstar home">
-                        <span className="flex size-8 items-center justify-center rounded-xl bg-slate-950 text-white shadow-sm">
+                        <span className="flex size-8 items-center justify-center rounded-xl bg-cyan-300 text-[#07152f] shadow-[0_0_24px_-6px_rgba(103,232,249,0.8)]">
                             <Sparkles className="size-4" />
                         </span>
-                        <span className="text-[15px] font-bold tracking-[-0.04em]">northstar<span className="text-indigo-600">.</span></span>
+                        <span className="text-[15px] font-bold tracking-[-0.04em] text-white">northstar<span className="text-cyan-300">.</span></span>
                     </a>
-                    <nav className="hidden items-center gap-8 text-sm font-medium text-slate-500 md:flex" aria-label="Main navigation">
-                        <a href="#product" className="transition-colors hover:text-slate-950">Product</a>
-                        <a href="#why-northstar" className="transition-colors hover:text-slate-950">Why Northstar</a>
-                        <a href="#customers" className="transition-colors hover:text-slate-950">Customers</a>
+                    <nav className="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex" aria-label="Main navigation">
+                        <a href="#product" className="transition-colors hover:text-cyan-200">Product</a>
+                        <a href="#why-northstar" className="transition-colors hover:text-cyan-200">Why Northstar</a>
+                        <a href="#customers" className="transition-colors hover:text-cyan-200">Customers</a>
                     </nav>
                     <div className="flex items-center gap-2">
                         {auth.user ? (
-                            <Link href={dashboard()} className="hidden rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100 sm:inline-flex">Dashboard</Link>
+                            <Link href={dashboard()} className="hidden rounded-lg px-4 py-2 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white sm:inline-flex">Dashboard</Link>
                         ) : (
-                            <Link href={login()} className="hidden rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100 sm:inline-flex">Log in</Link>
+                            <Link href={login()} className="hidden rounded-lg px-4 py-2 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white sm:inline-flex">Log in</Link>
                         )}
                         {/* @chisel-registration */}
-                        {!auth.user && <Link href={register()} className="hidden rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-indigo-700 sm:inline-flex">Start free</Link>}
+                        {!auth.user && <Link href={register()} className="hidden rounded-lg bg-cyan-300 px-4 py-2 text-sm font-semibold text-[#07152f] shadow-[0_10px_24px_-12px_rgba(103,232,249,0.9)] transition-transform hover:-translate-y-0.5 hover:bg-cyan-200 sm:inline-flex">Start free</Link>}
                         {/* @end-chisel-registration */}
-                        <button type="button" className="flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 md:hidden" aria-label="Open navigation menu">
+                        <button type="button" className="flex size-10 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white md:hidden" aria-label="Open navigation menu">
                             <Menu className="size-4" />
                         </button>
                     </div>
@@ -137,41 +137,41 @@ export default function Welcome() {
 
                 <main id="top">
                     <section className="relative mx-auto max-w-7xl px-5 pb-20 pt-16 sm:px-8 sm:pt-24 lg:px-10 lg:pb-28 lg:pt-28">
-                        <div className="pointer-events-none absolute -right-24 -top-28 size-[420px] rounded-full bg-indigo-100/60 blur-3xl" />
-                        <div className="pointer-events-none absolute left-1/3 top-24 h-48 w-48 rounded-full bg-violet-100/60 blur-3xl" />
+                        <div className="pointer-events-none absolute -right-24 -top-28 size-[420px] rounded-full bg-cyan-400/15 blur-3xl" />
+                        <div className="pointer-events-none absolute left-1/3 top-24 h-48 w-48 rounded-full bg-indigo-500/20 blur-3xl" />
                         <div className="relative grid items-center gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
                             <div className="max-w-xl">
-                                <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-indigo-700 shadow-sm">
-                                    <span className="size-1.5 rounded-full bg-indigo-500" /> Built for ambitious teams
+                                <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-cyan-200 shadow-sm backdrop-blur-sm">
+                                    <span className="size-1.5 rounded-full bg-cyan-300" /> Built for ambitious teams
                                     <ArrowRight className="size-3" />
                                 </div>
-                                <h1 className="max-w-[680px] text-5xl font-semibold leading-[0.98] tracking-[-0.075em] text-slate-950 sm:text-6xl lg:text-[4.8rem]">Make space for your best work.</h1>
-                                <p className="mt-7 max-w-lg text-base leading-7 text-slate-500 sm:text-lg sm:leading-8">Northstar gives growing teams the clarity to move faster, make smarter calls, and build what matters next.</p>
+                                <h1 className="max-w-[680px] text-5xl font-semibold leading-[0.98] tracking-[-0.075em] text-white sm:text-6xl lg:text-[4.8rem]">Make space for your <span className="text-cyan-300">best work.</span></h1>
+                                <p className="mt-7 max-w-lg text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">Northstar gives growing teams the clarity to move faster, make smarter calls, and build what matters next.</p>
                                 <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                                     {/* @chisel-registration */}
-                                    <Link href={auth.user ? dashboard() : register()} className="group inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_12px_24px_-12px_rgba(79,70,229,0.75)] transition-all hover:-translate-y-0.5 hover:bg-indigo-700">{auth.user ? 'Open dashboard' : 'Start building free'} <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" /></Link>
+                                    <Link href={auth.user ? dashboard() : register()} className="group inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-300 px-5 py-3.5 text-sm font-semibold text-[#07152f] shadow-[0_14px_28px_-12px_rgba(103,232,249,0.85)] transition-all hover:-translate-y-0.5 hover:bg-cyan-200">{auth.user ? 'Open dashboard' : 'Start building free'} <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" /></Link>
                                     {/* @end-chisel-registration */}
-                                    <a href="#product" className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-white hover:text-slate-950"><CirclePlay className="size-4 text-indigo-500" /> See how it works</a>
+                                    <a href="#product" className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-200 transition-colors hover:bg-white/10 hover:text-white"><CirclePlay className="size-4 text-cyan-300" /> See how it works</a>
                                 </div>
-                                <div className="mt-8 flex items-center gap-3 text-xs text-slate-400"><div className="flex -space-x-2"><span className="size-7 rounded-full border-2 border-[#fbfcff] bg-[#d8c2a4]" /><span className="size-7 rounded-full border-2 border-[#fbfcff] bg-[#91a7c3]" /><span className="size-7 rounded-full border-2 border-[#fbfcff] bg-[#c99592]" /><span className="flex size-7 items-center justify-center rounded-full border-2 border-[#fbfcff] bg-indigo-100 text-[9px] font-semibold text-indigo-700">+4k</span></div><span>Loved by teams who care about craft</span></div>
+                                <div className="mt-8 flex items-center gap-3 text-xs text-slate-400"><div className="flex -space-x-2"><span className="size-7 rounded-full border-2 border-[#07152f] bg-[#d8c2a4]" /><span className="size-7 rounded-full border-2 border-[#07152f] bg-[#91a7c3]" /><span className="size-7 rounded-full border-2 border-[#07152f] bg-[#c99592]" /><span className="flex size-7 items-center justify-center rounded-full border-2 border-[#07152f] bg-cyan-300 text-[9px] font-semibold text-[#07152f]">+4k</span></div><span> Loved by teams who care about craft</span></div>
                             </div>
                             <div id="product" className="lg:pt-6"><ProductPreview /></div>
                         </div>
                     </section>
 
-                    <section id="customers" className="border-y border-slate-200/70 bg-white/70">
+                    <section id="customers" className="border-y border-slate-200/70 bg-white">
                         <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-slate-200/70 px-5 py-7 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-8 lg:px-10">
                             {metrics.map((metric) => <div key={metric.label} className="flex items-center gap-3 py-4 first:pt-0 last:pb-0 sm:justify-center sm:py-1 sm:first:pt-1 sm:last:pb-1"><span className="text-2xl font-semibold tracking-[-0.06em] text-slate-950">{metric.value}</span><span className="max-w-24 text-xs leading-4 text-slate-400">{metric.label}</span></div>)}
                         </div>
                     </section>
 
-                    <section id="why-northstar" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+                    <section id="why-northstar" className="mx-auto max-w-7xl bg-white px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
                         <div className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-indigo-600">One clear direction</p><h2 className="max-w-lg text-3xl font-semibold tracking-[-0.06em] text-slate-950 sm:text-4xl">Everything you need to move with intention.</h2></div><p className="max-w-xs text-sm leading-6 text-slate-500">Less tab-switching. More meaningful progress. A better way to work together.</p></div>
                         <div className="grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 md:grid-cols-3">{capabilities.map(({ icon: Icon, eyebrow, title, description }) => <article key={title} className="bg-white p-7 sm:p-8"><div className="mb-12 flex size-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><Icon className="size-5" /></div><p className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">{eyebrow}</p><h3 className="text-xl font-semibold leading-tight tracking-[-0.04em] text-slate-900">{title}</h3><p className="mt-4 text-sm leading-6 text-slate-500">{description}</p></article>)}</div>
                     </section>
                 </main>
 
-                <footer className="border-t border-slate-200/70"><div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-7 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10"><div className="flex items-center gap-2 font-semibold text-slate-600"><span className="flex size-6 items-center justify-center rounded-lg bg-slate-950 text-white"><Sparkles className="size-3" /></span> northstar.</div><p>Make room for better work.</p><div className="flex gap-5"><a href="#product" className="hover:text-slate-700">Product</a><a href="#why-northstar" className="hover:text-slate-700">About</a></div></div></footer>
+                <footer className="border-t border-slate-200/70 bg-white"><div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-7 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10"><div className="flex items-center gap-2 font-semibold text-slate-600"><span className="flex size-6 items-center justify-center rounded-lg bg-slate-950 text-white"><Sparkles className="size-3" /></span> northstar.</div><p>Make room for better work.</p><div className="flex gap-5"><a href="#product" className="hover:text-slate-700">Product</a><a href="#why-northstar" className="hover:text-slate-700">About</a></div></div></footer>
             </div>
         </>
     );
