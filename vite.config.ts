@@ -10,7 +10,10 @@ export default defineConfig({
     resolve: {
         alias: [
             { find: '@inertiajs/react', replacement: file('./mock/inertia.tsx') },
+            { find: '@/routes/login', replacement: file('./mock/route-login.ts') },
+            { find: '@/routes/password', replacement: file('./mock/route-password.ts') },
             { find: '@/routes', replacement: file('./mock/routes.ts') },
+            { find: '@laravel/passkeys/react', replacement: file('./mock/passkeys.ts') },
             { find: /^@\//, replacement: file('./resources/js/') },
         ],
     },
