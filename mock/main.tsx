@@ -2,16 +2,16 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Welcome from './welcome';
 import Login from '../resources/js/pages/auth/login';
-import AuthLayout from '../resources/js/layouts/auth-layout';
+import AuthSplitLayout from '../resources/js/layouts/auth/auth-split-layout';
 import '../resources/css/app.css';
 
 function MockApp() {
     const pathname = window.location.pathname;
     if (pathname === '/login') {
         return (
-            <AuthLayout title={Login.layout.title} description={Login.layout.description}>
+            <AuthSplitLayout title={Login.layout.title} description={Login.layout.description}>
                 <Login canResetPassword={true} />
-            </AuthLayout>
+            </AuthSplitLayout>
         );
     }
     if (pathname === '/register' || pathname === '/forgot-password') {
