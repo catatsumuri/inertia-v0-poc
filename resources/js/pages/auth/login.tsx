@@ -33,13 +33,13 @@ export default function Login({ status, canResetPassword }: Props) {
             <Form
                 {...store.form()}
                 resetOnSuccess={['password']}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
+                        <div className="grid gap-5">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500" htmlFor="email">Email address</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -48,18 +48,19 @@ export default function Login({ status, canResetPassword }: Props) {
                                     autoFocus
                                     tabIndex={1}
                                     autoComplete="email"
-                                    placeholder="email@example.com"
+                                    placeholder="you@company.com"
+                                    className="h-11 rounded-xl border-slate-200 bg-slate-50/70 px-4 shadow-none transition focus-visible:border-cyan-400 focus-visible:ring-cyan-400/20"
                                 />
                                 <InputError message={errors.email} />
                             </div>
 
                             <div className="grid gap-2">
                                 <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500" htmlFor="password">Password</Label>
                                     {canResetPassword && (
                                         <TextLink
                                             href={request()}
-                                            className="ml-auto text-sm"
+                                            className="ml-auto text-sm font-medium text-cyan-700 hover:text-cyan-600"
                                             tabIndex={5}
                                         >
                                             Forgot your password?
@@ -72,12 +73,13 @@ export default function Login({ status, canResetPassword }: Props) {
                                     required
                                     tabIndex={2}
                                     autoComplete="current-password"
-                                    placeholder="Password"
+                                    placeholder="Enter your password"
+                                    className="h-11 rounded-xl border-slate-200 bg-slate-50/70 px-4 shadow-none transition focus-within:border-cyan-400 focus-within:ring-cyan-400/20"
                                 />
                                 <InputError message={errors.password} />
                             </div>
 
-                            <div className="flex items-center space-x-3">
+                            <div className="flex items-center gap-3 rounded-xl bg-slate-50/70 px-3 py-2.5">
                                 <Checkbox
                                     id="remember"
                                     name="remember"
@@ -88,7 +90,7 @@ export default function Login({ status, canResetPassword }: Props) {
 
                             <Button
                                 type="submit"
-                                className="mt-4 w-full"
+                                className="mt-4 h-11 w-full rounded-xl bg-cyan-400 font-semibold text-slate-950 shadow-[0_12px_30px_-12px_rgba(34,211,238,0.9)] transition hover:bg-cyan-300"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
@@ -99,9 +101,9 @@ export default function Login({ status, canResetPassword }: Props) {
                         </div>
 
                         {/* @chisel-registration */}
-                        <div className="text-center text-sm text-muted-foreground">
-                            Don't have an account?{' '}
-                            <TextLink href={register()} tabIndex={5}>
+                        <div className="text-center text-sm text-slate-500">
+                            {"Don't have an account?"}{' '}
+                            <TextLink className="font-semibold text-cyan-700 hover:text-cyan-600" href={register()} tabIndex={5}>
                                 Sign up
                             </TextLink>
                         </div>
