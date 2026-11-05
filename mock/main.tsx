@@ -2,11 +2,21 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Welcome from './welcome';
 import Login from '../resources/js/pages/auth/login';
+import Dashboard from '../resources/js/pages/dashboard';
 import AuthLayout from '../resources/js/layouts/auth-layout';
+import AppLayout from '../resources/js/layouts/app-layout';
 import '../resources/css/app.css';
 
 function MockApp() {
     const pathname = window.location.pathname;
+    if (pathname === '/dashboard') {
+        // Render the real Inertia page inside the real Laravel application layout.
+        return (
+            <AppLayout breadcrumbs={Dashboard.layout.breadcrumbs}>
+                <Dashboard />
+            </AppLayout>
+        );
+    }
     if (pathname === '/login') {
         return (
             <AuthLayout title={Login.layout.title} description={Login.layout.description}>
@@ -27,7 +37,8 @@ function MockApp() {
 }
 
 function PreviewControls() {
-    const signedIn = new URLSearchParams(window.location.search).get('auth') === '1';
+    const pathname = window.location.pathname;
+    const signedIn = pathname === '/dashboard' || new URLSearchParams(window.location.search).get('auth') === '1';
     return (
         <aside
             aria-label="Mock preview controls"
@@ -36,7 +47,7 @@ function PreviewControls() {
             <span className="font-semibold">UI MOCK</span>
             <a className={!signedIn ? 'font-bold underline' : 'hover:underline'} href="/?auth=0">Guest</a>
             <span aria-hidden="true">/</span>
-            <a className={signedIn ? 'font-bold underline' : 'hover:underline'} href="/?auth=1">Signed in</a>
+            <a className={signedIn ? 'font-bold underline' : 'hover:underline'} href="/dashboard">Dashboard (demo)</a>
         </aside>
     );
 }
