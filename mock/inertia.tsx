@@ -1,5 +1,15 @@
-// Preview-only stand-ins for Inertia. The Laravel app never imports this file.
+// UI preview only: Inertia-like adapters. No network authentication or credentials storage.
 import { useEffect, useState, type AnchorHTMLAttributes, type FormEvent, type ReactNode } from 'react';
+
+const demoUser = {
+    id: 1,
+    name: 'Demo User',
+    email: 'demo@example.test',
+    avatar: undefined,
+    email_verified_at: '2026-01-01T00:00:00.000Z',
+    created_at: '2026-01-01T00:00:00.000Z',
+    updated_at: '2026-01-01T00:00:00.000Z',
+};
 
 export function Head({ title }: { title?: string }) {
     useEffect(() => {
@@ -8,15 +18,26 @@ export function Head({ title }: { title?: string }) {
     return null;
 }
 
-export function Link({ href, children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) {
+type MockLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
+    href: string;
+    prefetch?: boolean;
+    as?: string;
+    method?: string;
+};
+
+export function Link({ href, children, prefetch: _prefetch, as: _as, method: _method, ...props }: MockLinkProps) {
     return <a href={href} {...props}>{children}</a>;
 }
 
 export function usePage() {
-    const signedIn = new URLSearchParams(window.location.search).get('auth') === '1';
+    const pathname = window.location.pathname;
+    const signedIn = pathname === '/dashboard' || new URLSearchParams(window.location.search).get('auth') === '1';
     return {
+        url: pathname + window.location.search,
         props: {
-            auth: { user: signedIn ? { id: 1, name: 'Preview User' } : null },
+            name: 'Northstar',
+            sidebarOpen: true,
+            auth: { user: signedIn ? demoUser : null },
         },
     };
 }
@@ -32,32 +53,32 @@ type FormProps = {
 };
 
 export function Form({ children, action, method = 'post', className }: FormProps) {
-    const [errors, setErrors] = useState<Record<string, string>>({});
     const [processing, setProcessing] = useState(false);
+    const [errors, setErrors] = useState<Record<string, string>>({});
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (processing) return;
-        // The browser handles native required/email input checks.
-        // Simulate a server validation response without sending credentials.
+        // Browser-native required/email validation still applies.
+        // No values from inputs are read, stored, sent, or logged.
         setProcessing(true);
         window.setTimeout(() => {
-            setErrors({
-                email: 'Demo only: no authentication server is connected.',
-                password: 'Use the Laravel Cloud application to test real login.',
-            });
-            setProcessing(false);
-        }, 350);
+            if (new URLSearchParams(window.location.search).has('validationError')) {
+                setErrors({ email: 'Demo validation error (not from Laravel).' });
+                setProcessing(false);
+            } else {
+                window.location.assign('/dashboard');
+            }
+        }, 200);
     };
 
     return (
         <form action={action} method={method} className={className} onSubmit={onSubmit}>
-            {typeof children === 'function'
-                ? children({ processing, errors })
-                : children}
+            {typeof children === 'function' ? children({ processing, errors }) : children}
         </form>
     );
 }
 
 export const router = {
     visit: (url: string) => { window.location.assign(url); },
+    flushAll: () => {},
 };
