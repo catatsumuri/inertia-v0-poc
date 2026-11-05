@@ -5,6 +5,7 @@ import Login from '../resources/js/pages/auth/login';
 import Dashboard from '../resources/js/pages/dashboard';
 import AuthLayout from '../resources/js/layouts/auth-layout';
 import AppLayout from '../resources/js/layouts/app-layout';
+import { TooltipProvider } from '../resources/js/components/ui/tooltip';
 import '../resources/css/app.css';
 
 function MockApp() {
@@ -54,7 +55,9 @@ function PreviewControls() {
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <MockApp />
+        <TooltipProvider delayDuration={0}>
+            <MockApp />
+        </TooltipProvider>
         <PreviewControls />
     </StrictMode>,
 );
