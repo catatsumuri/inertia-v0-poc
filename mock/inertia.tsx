@@ -16,6 +16,7 @@ export function usePage() {
     const signedIn = new URLSearchParams(window.location.search).get('auth') === '1';
     return {
         props: {
+            name: 'Northstar',
             auth: { user: signedIn ? { id: 1, name: 'Preview User' } : null },
         },
     };
